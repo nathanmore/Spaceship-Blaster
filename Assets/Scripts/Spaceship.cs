@@ -10,14 +10,25 @@ using UnityEngine;
 /// </summary>
 public class Spaceship : MonoBehaviour, IDamageable<float>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    SO_SpaceshipData shipData;
+
+    // Called when object is enabled, before Start
+    public void OnEnable()
     {
-        
+        // Clones the master data file so it does not make changes to it during runtime. Must be done before accessing data.
+        SO_SpaceshipData clone = Instantiate(shipData);
+        shipData = clone;
+    }
+
+    // Start is called before the first frame update
+    public void Start()
+    {
+
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         
     }
