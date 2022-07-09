@@ -8,12 +8,12 @@ using UnityEngine;
 ///     Dodging
 ///     Shooting
 /// </summary>
-public class Spaceship : MonoBehaviour, IDamageable<float>
+public class Spaceship : MonoBehaviour, IDamageable<int>
 {
     [SerializeField]
-    SO_SpaceshipData shipData;
+    SO_SpaceshipData shipData; // Data object for spaceship
 
-    // Called when object is enabled, before Start
+    // Called when object first becomes active, before Start
     public void OnEnable()
     {
         // Clones the master data file so it does not make changes to it during runtime. Must be done before accessing data.
@@ -33,8 +33,8 @@ public class Spaceship : MonoBehaviour, IDamageable<float>
         
     }
 
-    // Moves ship on x/y axis according to velocity
-    public void Move(Vector2 velocity)
+    // Moves ship on x/y axis according to normalized vector passed in for direction
+    public void Move(Vector2 directon)
     {
 
     }
@@ -42,20 +42,38 @@ public class Spaceship : MonoBehaviour, IDamageable<float>
     // quickly move ship to right if isRight is true, move to left otherwise
     public void Dodge(bool isRight)
     {
-
+        if (isRight)
+        {
+            Debug.Log("Roll to the right");
+        }
+        else
+        {
+            Debug.Log("Roll to the left");
+        }
     }
 
     // Fire projectile (instantiate projectile object)
     public void Fire()
     {
-
+        Debug.Log("Fire Gun");
     }
 
     // Required method for IDamageable interface
     // Reduces health based on damageTaken
-    // If health reaches 0, destroy ship
-    public void Damage(float damageTaken)
+    // If health reaches 0, call DestroyShip()
+    public void Damage(int damageTaken)
     {
+        shipData.Health -= damageTaken;
+        
+        if (shipData.Health <= 0)
+        {
+            DestroyShip();
+        }
+    }
 
+    public void DestroyShip()
+    {
+        Debug.Log("Ship has been destroyed.");
+        Destroy(gameObject);
     }
 }
