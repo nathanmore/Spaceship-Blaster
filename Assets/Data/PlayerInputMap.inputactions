@@ -7,12 +7,12 @@
             "actions": [
                 {
                     "name": "Movement",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "fddd4be5-2747-4f00-befb-c89e7c3e8f68",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Fire",
@@ -318,17 +318,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ab5c7d00-bfc5-486c-8cb6-11e19606b71e",
-                    "path": "<Keyboard>/a",
-                    "interactions": "MultiTap",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Dodge-Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "0089ac6e-5912-40f0-a700-68ef45a85331",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
@@ -346,17 +335,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Dodge-Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8f9bbe8e-bd61-4544-9431-075cd7e4572e",
-                    "path": "<Keyboard>/d",
-                    "interactions": "MultiTap",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Dodge-Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

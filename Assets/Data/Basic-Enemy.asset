@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4955cc0793f0204bbbcaa29921f02fb, type: 3}
-  m_Name: Player-Ship
+  m_Name: Basic-Enemy
   m_EditorClassIdentifier: 
   Health: 5
-  MovementSpeed: 10
-  DodgeSpeed: 20
+  MovementSpeed: 8
+  DodgeSpeed: 0

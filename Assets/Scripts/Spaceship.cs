@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 /// <summary>
 /// Class to contain functions related to all spaceships (player and enemies):
 ///     Movement
 ///     Dodging
 ///     Shooting
 /// </summary>
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
 public class Spaceship : MonoBehaviour, IDamageable<int>
 {
     [SerializeField]
@@ -34,9 +36,11 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     }
 
     // Moves ship on x/y axis according to normalized vector passed in for direction
-    public void Move(Vector2 directon)
+    public void Move(Vector2 direction)
     {
+        Vector3 velocity = new Vector3(direction.x, direction.y, 0) * shipData.MovementSpeed * Time.deltaTime;
 
+        transform.position += velocity;
     }
 
     // quickly move ship to right if isRight is true, move to left otherwise
