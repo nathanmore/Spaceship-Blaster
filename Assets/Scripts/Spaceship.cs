@@ -32,7 +32,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     // Update is called once per frame
     public void Update()
     {
-        
+
     }
 
     // Moves ship on x/y axis according to normalized vector passed in for direction
@@ -41,6 +41,21 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
         Vector3 velocity = new Vector3(direction.x, direction.y, 0) * shipData.MovementSpeed * Time.deltaTime;
 
         transform.position += velocity;
+
+        Tilt(direction);
+    }
+
+    // Tilts ship on x/y axis according to which direction (right/left) it's going
+    public void Tilt(Vector2 direction)
+    {
+      if(direction.x > 0)
+      {
+        transform.Rotate(0, 0, -15);
+      }
+      else if(direction.x < 0)
+      {
+        transform.Rotate(0, 0, 15);
+      }
     }
 
     // quickly move ship to right if isRight is true, move to left otherwise
@@ -48,11 +63,21 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     {
         if (isRight)
         {
+            Vector3 dodgeVelocity = new Vector3(5, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
+            transform.position += dodgeVelocity;
+
             Debug.Log("Roll to the right");
+
+            transform.Rotate(Vector3.up, 45f);
         }
         else
         {
             Debug.Log("Roll to the left");
+
+            Vector3 dodgeVelocity = new Vector3(-5, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
+            transform.position += dodgeVelocity;
+
+            transform.Rotate(Vector3.up, 45f);
         }
     }
 
@@ -68,7 +93,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     public void Damage(int damageTaken)
     {
         shipData.Health -= damageTaken;
-        
+
         if (shipData.Health <= 0)
         {
             DestroyShip();

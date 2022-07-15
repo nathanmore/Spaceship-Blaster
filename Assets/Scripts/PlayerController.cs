@@ -18,6 +18,7 @@ public class PlayerController : Spaceship
     new public void Update()
     {
         base.Update(); // Call the child class update
+        transform.rotation = Quaternion.identity; // Resets rotation (for tilt) to 0 before every move
         Move(direction); // Move according to direction
 
     }
