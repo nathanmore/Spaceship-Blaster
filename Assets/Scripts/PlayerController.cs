@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Spaceship
 {
+   
     Vector2 direction = Vector2.zero; // Holds direction of movement. 0,0 by default
 
 
