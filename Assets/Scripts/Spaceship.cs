@@ -38,46 +38,48 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     // Moves ship on x/y axis according to normalized vector passed in for direction
     public void Move(Vector2 direction)
     {
+        // Change position of ship
         Vector3 velocity = new Vector3(direction.x, direction.y, 0) * shipData.MovementSpeed * Time.deltaTime;
-
         transform.position += velocity;
 
-        Tilt(direction);
+        // Tilt 30 degrees around ship's y-axis while moving
+        Tilt(direction, 30);
     }
 
-    // Tilts ship on x/y axis according to which direction (right/left) it's going
-    public void Tilt(Vector2 direction)
+    // Tilts ship around y-axis according to the given angle and which direction it's going
+    public void Tilt(Vector2 direction, int angle)
     {
       if(direction.x > 0)
       {
-        transform.Rotate(0, 0, -15);
+        transform.Rotate(0, (-1) * angle, 0);
       }
       else if(direction.x < 0)
       {
-        transform.Rotate(0, 0, 15);
+        transform.Rotate(0, angle, 0);
       }
     }
 
-    // quickly move ship to right if isRight is true, move to left otherwise
+    // Quickly move ship to right if isRight is true, move to left otherwise
     public void Dodge(bool isRight)
     {
         if (isRight)
         {
-            Vector3 dodgeVelocity = new Vector3(5, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
-            transform.position += dodgeVelocity;
-
             Debug.Log("Roll to the right");
 
-            transform.Rotate(Vector3.up, 45f);
+            // Change ship's location
+            Vector3 velocity = new Vector3(1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
+            transform.position += velocity;
+            // Change ship's rotation (in each frame, tilt 15 degrees to the right)
+            Tilt(new Vector2(1, 0), 15);
         }
         else
         {
             Debug.Log("Roll to the left");
 
-            Vector3 dodgeVelocity = new Vector3(-5, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
-            transform.position += dodgeVelocity;
+            Vector3 velocity = new Vector3(-1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
+            transform.position += velocity;
 
-            transform.Rotate(Vector3.up, 45f);
+            Tilt(new Vector2(-1, 0), 15);
         }
     }
 
