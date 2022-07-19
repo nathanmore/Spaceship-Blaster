@@ -13,7 +13,11 @@ using UnityEngine;
 public class Spaceship : MonoBehaviour, IDamageable<int>
 {
     [SerializeField]
-    SO_SpaceshipData shipData; // Data object for spaceship
+    private SO_SpaceshipData shipData; // Data object for spaceship
+    [SerializeField]
+    private GameObject projectilePrefab;
+    [SerializeField]
+    private Transform projectileSpawnTransform;
 
     //// Called when object first becomes active, before Start
     //public void OnEnable()
@@ -87,6 +91,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     public void Fire()
     {
         Debug.Log("Fire Gun");
+        GameObject.Instantiate(projectilePrefab, projectileSpawnTransform.position, Quaternion.identity);
     }
 
     // Required method for IDamageable interface

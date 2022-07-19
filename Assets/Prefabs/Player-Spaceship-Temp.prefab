@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1906663618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1906663619}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1906663619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906663618}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.924, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 230835051867381616}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &230835051545228248
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 49f0e0760425cd54b8da60660eea261d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -160,7 +191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 49f0e0760425cd54b8da60660eea261d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -207,6 +238,7 @@ GameObject:
   - component: {fileID: 230835051867381618}
   - component: {fileID: 230835051867381619}
   - component: {fileID: 1704829272}
+  - component: {fileID: 230835052364054055}
   m_Layer: 0
   m_Name: Player-Spaceship-Temp
   m_TagString: Untagged
@@ -229,6 +261,7 @@ Transform:
   - {fileID: 230835051567012442}
   - {fileID: 230835052402030109}
   - {fileID: 230835051545228251}
+  - {fileID: 1906663619}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,6 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipData: {fileID: 11400000, guid: ce6e9a5f040c2f44da959ccb79c592d0, type: 2}
+  projectilePrefab: {fileID: 3136523373168173976, guid: 75088e1b5970f614e9714cfd666270e3, type: 3}
+  projectileSpawnTransform: {fileID: 1906663619}
 --- !u!114 &230835051867381619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +404,18 @@ CapsuleCollider:
   m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0.0045303106, y: 0, z: 0}
+--- !u!114 &230835052364054055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230835051867381617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec41072a871a5747a5b5f035ce7f7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &230835052402030098
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +478,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 49f0e0760425cd54b8da60660eea261d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
