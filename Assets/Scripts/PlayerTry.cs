@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class PlayerTry : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    private Spaceship playerShip;
 
-    public HealthBar healthBar;
+    //public int maxHealth = 100;
+    //public int currentHealth;
+
+    //public HealthBar healthBar;
 
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //currentHealth = maxHealth;
+        //healthBar.SetMaxHealth(maxHealth);
+
+        playerShip = this.gameObject.GetComponent<Spaceship>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(20);
+            //TakeDamage(20);
+            playerShip.Damage(1);
         }
     }
 
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
+    //void TakeDamage(int damage)
+    //{
+    //    currentHealth -= damage;
 
-        healthBar.SetHealth(currentHealth);
-    }
+    //    healthBar.SetHealth(currentHealth);
+    //}
 
 }

@@ -15,18 +15,18 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     [SerializeField]
     SO_SpaceshipData shipData; // Data object for spaceship
 
-    // Called when object first becomes active, before Start
-    public void OnEnable()
-    {
-        // Clones the master data file so it does not make changes to it during runtime. Must be done before accessing data.
-        SO_SpaceshipData clone = Instantiate(shipData);
-        shipData = clone;
-    }
+    //// Called when object first becomes active, before Start
+    //public void OnEnable()
+    //{
+    //    // Clones the master data file so it does not make changes to it during runtime. Must be done before accessing data.
+    //    SO_SpaceshipData clone = Instantiate(shipData);
+    //    shipData = clone;
+    //}
 
     // Start is called before the first frame update
     public void Start()
     {
-
+        shipData.CurrentHealth = shipData.MaxHealth;
     }
 
     // Update is called once per frame
@@ -94,9 +94,9 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     // If health reaches 0, call DestroyShip()
     public void Damage(int damageTaken)
     {
-        shipData.Health -= damageTaken;
+        shipData.CurrentHealth -= damageTaken;
 
-        if (shipData.Health <= 0)
+        if (shipData.CurrentHealth <= 0)
         {
             DestroyShip();
         }
