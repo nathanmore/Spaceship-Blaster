@@ -47,4 +47,9 @@ public class Projectile : MonoBehaviour
     {
         transform.position += velocity;
     }
+
+    public void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }

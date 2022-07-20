@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player-Ship
   m_EditorClassIdentifier: 
   MaxHealth: 4
-  CurrentHealth: 0
+  CurrentHealth: 4
   MovementSpeed: 10
-  DodgeSpeed: 20
+  DodgeSpeed: 2
