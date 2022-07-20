@@ -90,7 +90,6 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     // Fire projectile (instantiate projectile object)
     public void Fire()
     {
-        Debug.Log("Fire Gun");
         GameObject.Instantiate(projectilePrefab, projectileSpawnTransform.position, Quaternion.identity);
     }
 
