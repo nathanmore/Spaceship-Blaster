@@ -15,9 +15,9 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     [SerializeField]
     private SO_SpaceshipData shipData; // Data object for spaceship
     [SerializeField]
-    private GameObject projectilePrefab;
+    protected GameObject projectilePrefab;
     [SerializeField]
-    private Transform projectileSpawnTransform;
+    protected Transform projectileSpawnTransform;
 
     //// Called when object first becomes active, before Start
     //public void OnEnable()
@@ -108,7 +108,6 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
 
     public void DestroyShip()
     {
-        Debug.Log("Ship has been destroyed.");
         Destroy(gameObject);
     }
 }
