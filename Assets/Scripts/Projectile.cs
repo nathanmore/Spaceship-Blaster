@@ -31,26 +31,26 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    // When projectile hits damageable object, set hit to true, deal damage, and destroy projectile
     public void OnCollisionEnter(Collision collision)
     {
-        // When projectile hits ship, set hit to true, deal damage, and destroy projectile
-        Spaceship impactedShip = collision.gameObject.GetComponent<Spaceship>();
+        IDamageable<int> impact = collision.gameObject.GetComponent<IDamageable<int>>();
 
-        if (impactedShip != null)
+        if (impact != null)
         {
-            if (impactedShip.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player")
             {
                 if (playerFriendly != true)
                 {
-                    impactedShip.Damage(projectileDamage);
+                    impact.Damage(projectileDamage);
                     Destroy(this.gameObject);
                 }
             }
-            else if (impactedShip.gameObject.tag == "Enemy")
+            else if (collision.gameObject.tag == "Enemy")
             {
                 if (playerFriendly == true)
                 {
-                    impactedShip.Damage(projectileDamage);
+                    impact.Damage(projectileDamage);
                     Destroy(this.gameObject);
                 }
             }
