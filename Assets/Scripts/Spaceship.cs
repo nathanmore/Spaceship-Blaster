@@ -13,7 +13,7 @@ using UnityEngine;
 public class Spaceship : MonoBehaviour, IDamageable<int>
 {
     [SerializeField]
-    private SO_SpaceshipData shipData; // Data object for spaceship
+    protected SO_SpaceshipData shipData; // Data object for spaceship
     [SerializeField]
     protected GameObject projectilePrefab;
     [SerializeField]

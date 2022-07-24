@@ -12,6 +12,9 @@ public class PlayerController : Spaceship
     bool isRight = false;
     float dodgeRot = 0.0f;
 
+    // Public accessor for shipData, for power-ups
+    public SO_SpaceshipData ShipData { get { return shipData; } }
+
     // Updates direction of movement
     public void InputMove(InputAction.CallbackContext context)
     {
