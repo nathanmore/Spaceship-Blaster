@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     private int projectileDamage = 1;
     private bool hit;
     private bool playerFriendly = false;
+    private PlayerController playerReference;
 
     // Public accesssor for projectieDamage, in case future power-ups want to increase damage.
     public int ProjectileDamage { get { return projectileDamage; } set { projectileDamage = value; } }

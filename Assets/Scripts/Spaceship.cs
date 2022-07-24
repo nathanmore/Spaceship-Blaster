@@ -15,17 +15,11 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     [SerializeField]
     protected SO_SpaceshipData shipData; // Data object for spaceship
     [SerializeField]
+    private SO_ScoreData scoreData;
+    [SerializeField]
     protected GameObject projectilePrefab;
     [SerializeField]
     protected Transform projectileSpawnTransform;
-
-    //// Called when object first becomes active, before Start
-    //public void OnEnable()
-    //{
-    //    // Clones the master data file so it does not make changes to it during runtime. Must be done before accessing data.
-    //    SO_SpaceshipData clone = Instantiate(shipData);
-    //    shipData = clone;
-    //}
 
     // Start is called before the first frame update
     public void Start()
@@ -108,6 +102,10 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
 
     public void DestroyShip()
     {
+        if (this.gameObject.tag == "Enemy") // If this ship is enemy, increase player score when destroyed
+        {
+            scoreData.IncreaseScore(shipData.scoreValue);
+        }
         Destroy(gameObject);
     }
 }

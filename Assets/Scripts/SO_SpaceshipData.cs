@@ -12,4 +12,6 @@ public class SO_SpaceshipData : ScriptableObject
     public float MovementSpeed;
 
     public float DodgeSpeed;
+
+    public int scoreValue;
 }
