@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Score-Data", menuName = "ScriptableObjects/SO_ScoreData", order = 1)]
 public class SO_ScoreData : ScriptableObject
 {
     [SerializeField]

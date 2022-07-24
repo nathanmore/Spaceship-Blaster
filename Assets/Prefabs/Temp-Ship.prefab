@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 230835052364054055}
   - component: {fileID: 1355048116}
   m_Layer: 0
-  m_Name: Player-Spaceship-Temp
+  m_Name: Temp-Ship
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipData: {fileID: 11400000, guid: ce6e9a5f040c2f44da959ccb79c592d0, type: 2}
+  scoreData: {fileID: 0}
   projectilePrefab: {fileID: 3136523373168173976, guid: 75088e1b5970f614e9714cfd666270e3, type: 3}
   projectileSpawnTransform: {fileID: 1906663619}
 --- !u!114 &230835051867381619
