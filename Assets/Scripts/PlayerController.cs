@@ -43,6 +43,7 @@ public class PlayerController : Spaceship
         {
             transform.rotation = Quaternion.identity; // Resets rotation (for tilt) to 0 before every move
             Move(direction); // Move according to direction
+            Tilt(direction, 25); // Tilt 25 degrees around ship's y-axis while moving
         }
 
     }

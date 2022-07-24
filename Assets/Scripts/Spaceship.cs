@@ -39,9 +39,6 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
         // Change position of ship
         Vector3 velocity = new Vector3(direction.x, direction.y, 0) * shipData.MovementSpeed * Time.deltaTime;
         transform.position += velocity;
-
-        // Tilt 30 degrees around ship's y-axis while moving
-        Tilt(direction, 30);
     }
 
     // Tilts ship around y-axis according to the given angle and which direction it's going
