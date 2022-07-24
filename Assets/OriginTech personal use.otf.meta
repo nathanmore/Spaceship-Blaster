@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 271e0a79c10e3704c95adbaa2187431a
+guid: 9d74920532d78b949b784eb55622558c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Origin Tech Demo
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bcc2ecaf87886a043bfafc905d5a0b43, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
