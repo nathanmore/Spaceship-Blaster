@@ -59,8 +59,6 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     {
         if (isRight)
         {
-            Debug.Log("Roll to the right");
-
             // Change ship's location
             Vector3 velocity = new Vector3(1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
             transform.position += velocity;
@@ -69,8 +67,6 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
         }
         else
         {
-            Debug.Log("Roll to the left");
-
             Vector3 velocity = new Vector3(-1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
             transform.position += velocity;
 
