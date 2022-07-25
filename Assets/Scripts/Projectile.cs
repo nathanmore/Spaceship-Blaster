@@ -8,7 +8,6 @@ public class Projectile : MonoBehaviour
     private float projectileSpeed = 10f;
 
     private bool hit;
-    private bool playerFriendly = false;
 
     public int ProjectileDamage { get; set; }
     public string ObjectTag { get; set; }
@@ -20,14 +19,6 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         hit = false;
-        if (ObjectTag == "Player")
-        {
-            playerFriendly = true;
-        }
-        else
-        {
-            playerFriendly = false;
-        }
     }
 
     // Update is called once per frame
@@ -46,21 +37,10 @@ public class Projectile : MonoBehaviour
 
         if (impact != null)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag != ObjectTag)
             {
-                if (playerFriendly != true)
-                {
-                    impact.Damage(ProjectileDamage);
-                    Destroy(this.gameObject);
-                }
-            }
-            else if (collision.gameObject.tag == "Enemy")
-            {
-                if (playerFriendly == true)
-                {
-                    impact.Damage(ProjectileDamage);
-                    Destroy(this.gameObject);
-                }
+                impact.Damage(ProjectileDamage);
+                Destroy(this.gameObject);
             }
         }
     }
@@ -68,10 +48,5 @@ public class Projectile : MonoBehaviour
     public void OnBecameInvisible()
     {
         Destroy(this.gameObject);
-    }
-
-    public void MakePlayerFriendly()
-    {
-        playerFriendly = true;
     }
 }
