@@ -8,10 +8,13 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI highScoreText;
+    [SerializeField]
+    private SO_ScoreData scoreData;
 
     public void Start()
     {
         // Update highScoreText to display current high score
+        highScoreText.text = scoreData.HighScore.ToString();
     }
 
     // Start new game: transition to main scene

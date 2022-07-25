@@ -13,9 +13,19 @@ public class WaveManager : MonoBehaviour
     private TextMeshProUGUI waveTextAsset;
     [SerializeField]
     private Transform[] enemyLocations;
+    [SerializeField]
+    private ScoreTracker scoreTracker;
+    [SerializeField]
+    private float spawnDelay = 1.0f;
 
     private int waveCounter;
     private List<EnemyController> enemies = new List<EnemyController>();
+
+    // Public accessor for enemies list
+    public List<EnemyController> Enemies { get { return enemies; } }
+
+    // Public accessor for waveCounter
+    public int WaveCounter { get { return waveCounter; } }
 
     // Start is called before the first frame update
     void Start()
@@ -56,12 +66,13 @@ public class WaveManager : MonoBehaviour
 
             newEnemy.enemyDestroyedEvent += RemoveEnemyOnDestroy;
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 
     public void RemoveEnemyOnDestroy(EnemyController enemyRef)
     {
         enemies.Remove(enemyRef);
+        scoreTracker.UpdateScore(enemyRef.ScoreValue);
     }
 }
