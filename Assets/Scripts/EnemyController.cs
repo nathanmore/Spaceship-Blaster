@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyController : Spaceship
 {
@@ -8,6 +9,9 @@ public class EnemyController : Spaceship
     private Vector3 targetLocation;
     [SerializeField]
     private Vector3 minDistance = (0.2f)*Vector3.one;
+
+    public EnemyDelegate enemyDestroyedEvent;
+
 
     new public void Update()
     {
@@ -34,4 +38,16 @@ public class EnemyController : Spaceship
     {
         targetLocation = newLoc;
     }
+
+    public void OnDestroy()
+    {
+        if (enemyDestroyedEvent != null)
+        {
+            //Tells listeneners that object is destroyed
+            enemyDestroyedEvent(this.gameObject.GetComponent<EnemyController>());
+        }
+    }
 }
+
+// Delegate for handling events
+public delegate void EnemyDelegate(EnemyController enemyRef);

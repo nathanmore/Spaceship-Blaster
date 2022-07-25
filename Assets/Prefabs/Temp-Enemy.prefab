@@ -281,7 +281,8 @@ MonoBehaviour:
   scoreData: {fileID: 11400000, guid: 85b81b1a8ab934f489f9bb8d1ada3160, type: 2}
   projectilePrefab: {fileID: 3136523373168173976, guid: 75088e1b5970f614e9714cfd666270e3, type: 3}
   projectileSpawnTransform: {fileID: 6649427580274685213}
-  testLocation: {x: 0, y: 0, z: 0}
+  targetLocation: {x: 0, y: 0, z: 0}
+  minDistance: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!1 &6878004225296688076
 GameObject:
   m_ObjectHideFlags: 0

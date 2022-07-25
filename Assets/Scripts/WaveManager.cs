@@ -1,0 +1,67 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class WaveManager : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject enemyPrefab;
+    [SerializeField]
+    private GameObject[] powerUpPrefabs;
+    [SerializeField]
+    private TextMeshProUGUI waveTextAsset;
+    [SerializeField]
+    private Transform[] enemyLocations;
+
+    private int waveCounter;
+    private List<EnemyController> enemies = new List<EnemyController>();
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        waveCounter = 1;
+
+        waveTextAsset.text = waveCounter.ToString();
+
+        // Spawn first wave
+        StartCoroutine(SpawnEnemies());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // When all enemies are destroyed, increment waves, update text, spawn new enemies and/or power-ups
+        if (enemies.Count == 0)
+        {
+            waveCounter++;
+            waveTextAsset.text = waveCounter.ToString();
+
+            // Spawn new enemies
+            StartCoroutine(SpawnEnemies());
+
+            // Spawn power-ups
+        }
+    }
+
+    public IEnumerator SpawnEnemies()
+    {
+        foreach (Transform t in enemyLocations)
+        {
+            EnemyController newEnemy = GameObject.Instantiate(enemyPrefab, this.transform.position, Quaternion.identity).GetComponent<EnemyController>();
+
+            newEnemy.SetTargetLocation(t.position);
+            
+            enemies.Add(newEnemy);
+
+            newEnemy.enemyDestroyedEvent += RemoveEnemyOnDestroy;
+
+            yield return new WaitForSeconds(2);
+        }
+    }
+
+    public void RemoveEnemyOnDestroy(EnemyController enemyRef)
+    {
+        enemies.Remove(enemyRef);
+    }
+}
