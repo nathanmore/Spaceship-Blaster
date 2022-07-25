@@ -7,9 +7,9 @@ public class PlayerController : Spaceship
 {
     Vector2 direction = Vector2.zero; // Holds direction of movement. 0,0 by default
 
-    bool performDodge = false;
-    bool isRight = false;
-    float dodgeRot = 0.0f;
+    bool performDodge = false; // Tracks whether or not a dodge should be performed in this frame
+    bool isRight = false; // If dodge is being performed, keeps track of whether it is to the left or right
+    float dodgeRot = 0.0f; // Tracks how much the ship has been rotated if dodge roll is happening
 
     // Public accessor for shipData, for power-ups
     public SO_SpaceshipData ShipData { get { return shipData; } }
@@ -27,10 +27,10 @@ public class PlayerController : Spaceship
 
         if(performDodge == true) // Execute a dodge if performDodge tag is on
         {
-            if (dodgeRot < 300) // Will rotate (roll) 300 degrees max, then reset to 0
+            if (dodgeRot < 350) // Will rotate (roll) 350 degrees max, then reset to 0
             {
                 Dodge(isRight);
-                dodgeRot += 15; // To animate, 15 degree rotation per frame
+                dodgeRot += 5; // To animate, there is a 5 degree rotation per frame
             }
             else
             {

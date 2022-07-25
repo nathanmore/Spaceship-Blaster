@@ -64,8 +64,8 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
             // Change ship's location
             Vector3 velocity = new Vector3(1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
             transform.position += velocity;
-            // Change ship's rotation (in each frame, tilt 15 degrees to the right)
-            Tilt(new Vector2(1, 0), 15);
+            // Change ship's rotation (in each frame, tilt 5 degrees to the right)
+            Tilt(new Vector2(1, 0), 5);
         }
         else
         {
@@ -74,7 +74,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
             Vector3 velocity = new Vector3(-1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
             transform.position += velocity;
 
-            Tilt(new Vector2(-1, 0), 15);
+            Tilt(new Vector2(-1, 0), 5);
         }
     }
 
