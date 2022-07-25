@@ -14,4 +14,8 @@ public class SO_SpaceshipData : ScriptableObject
     public float DodgeSpeed;
 
     public int scoreValue;
+
+    public float fireDelay;
+
+    public int weaponDamage;
 }

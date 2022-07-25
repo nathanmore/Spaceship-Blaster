@@ -17,7 +17,8 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     [SerializeField]
     protected GameObject projectilePrefab;
     [SerializeField]
-    protected Transform projectileSpawnTransform;
+    protected ProjectileFactory projectileFactory;
+    //protected Transform projectileSpawnTransform;
 
     public int ScoreValue { get { return shipData.scoreValue; } }
 
@@ -77,7 +78,8 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     // Fire projectile (instantiate projectile object)
     public void Fire()
     {
-        GameObject.Instantiate(projectilePrefab, projectileSpawnTransform.position, Quaternion.identity);
+        //GameObject.Instantiate(projectilePrefab, projectileSpawnTransform.position, this.gameObject.transform.rotation);
+        projectileFactory.InstantiateProjectile(this.gameObject.tag, Vector3.up, shipData.weaponDamage);
     }
 
     // Required method for IDamageable interface

@@ -11,6 +11,8 @@ public class EnemyController : Spaceship
     private Vector3 minDistance = (0.2f)*Vector3.one;
 
     public EnemyDelegate enemyDestroyedEvent;
+    private bool locationReached = false;
+    private bool weaponFiringActive = true;
 
 
     new public void Update()
@@ -18,6 +20,16 @@ public class EnemyController : Spaceship
         base.Update();
 
         MoveToLocation(targetLocation);
+
+        if (locationReached)
+        {
+            StartCoroutine(FireWeapon());
+        }
+        else
+        {
+            StopCoroutine(FireWeapon());
+        }
+
     }
 
     public void MoveToLocation(Vector3 targetLoc)
@@ -32,6 +44,10 @@ public class EnemyController : Spaceship
             Move(moveDirection2D);
             Tilt(moveDirection2D, -25); // Tilt 25 degrees around ship's y-axis while moving
         } 
+        else
+        {
+            locationReached = true;
+        }
     }
 
     public void SetTargetLocation(Vector3 newLoc)
@@ -45,6 +61,21 @@ public class EnemyController : Spaceship
         {
             //Tells listeneners that object is destroyed
             enemyDestroyedEvent(this.gameObject.GetComponent<EnemyController>());
+        }
+    }
+
+    public IEnumerator FireWeapon()
+    {
+        if (weaponFiringActive)
+        {
+            Fire();
+            weaponFiringActive = false;
+            yield return new WaitForSeconds(shipData.fireDelay);
+            weaponFiringActive = true;
+        }
+        else
+        {
+            yield return null;
         }
     }
 }

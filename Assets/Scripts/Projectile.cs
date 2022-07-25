@@ -7,28 +7,35 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private float projectileSpeed = 10f;
 
-    //private Vector3 projectileVelocity;
-    private int projectileDamage = 1;
     private bool hit;
     private bool playerFriendly = false;
-    private PlayerController playerReference;
 
-    // Public accesssor for projectieDamage, in case future power-ups want to increase damage.
-    public int ProjectileDamage { get { return projectileDamage; } set { projectileDamage = value; } }
+    public int ProjectileDamage { get; set; }
+    public string ObjectTag { get; set; }
+    public Vector3 Direction { get; set; }
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         hit = false;
+        if (ObjectTag == "Player")
+        {
+            playerFriendly = true;
+        }
+        else
+        {
+            playerFriendly = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         if (hit == false)
-        {  
-            Motion(Vector3.up * projectileSpeed);
+        {
+            transform.position += (Direction * projectileSpeed);
         }
     }
 
@@ -43,7 +50,7 @@ public class Projectile : MonoBehaviour
             {
                 if (playerFriendly != true)
                 {
-                    impact.Damage(projectileDamage);
+                    impact.Damage(ProjectileDamage);
                     Destroy(this.gameObject);
                 }
             }
@@ -51,16 +58,11 @@ public class Projectile : MonoBehaviour
             {
                 if (playerFriendly == true)
                 {
-                    impact.Damage(projectileDamage);
+                    impact.Damage(ProjectileDamage);
                     Destroy(this.gameObject);
                 }
             }
         }
-    }
-
-    public void Motion(Vector3 velocity)
-    {
-        transform.position += velocity;
     }
 
     public void OnBecameInvisible()

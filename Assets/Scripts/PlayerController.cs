@@ -87,10 +87,10 @@ public class PlayerController : Spaceship
     }
 
     // Override Fire method for player only
-    new public void Fire()
-    {
-        GameObject obj = GameObject.Instantiate(projectilePrefab, projectileSpawnTransform.position, Quaternion.identity);
-        Projectile newProjectile = obj.GetComponent<Projectile>();
-        newProjectile.MakePlayerFriendly();
-    }
+    //new public void Fire()
+    //{
+    //    GameObject obj = GameObject.Instantiate(projectilePrefab, projectileSpawnTransform.position, Quaternion.identity);
+    //    Projectile newProjectile = obj.GetComponent<Projectile>();
+    //    newProjectile.MakePlayerFriendly();
+    //}
 }
