@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &592997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8857153280427374498, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+  m_PrefabInstance: {fileID: 5977472995673058194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &52332500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,14 +1295,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049226814}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -8.24, y: 12.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 684395615}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &1481687997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1713,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+      propertyPath: shipModelTransform
+      value: 
+      objectReference: {fileID: 592997}
     - target: {fileID: 7364402061863566397, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
       propertyPath: m_Camera
       value: 

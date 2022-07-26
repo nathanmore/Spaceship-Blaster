@@ -35,13 +35,13 @@ public class PlayerController : Spaceship
             else
             {
                 dodgeRot = 0.0f; // Completed one dodge/barrel roll, reset rotation back to 0
-                transform.rotation = Quaternion.identity;
+                shipModelTransform.rotation = baseRotation;
                 performDodge = false;
             }
         }
         else // Did not need to perform a dodge, check for movement
         {
-            transform.rotation = Quaternion.identity; // Resets rotation (for tilt) to 0 before every move
+            shipModelTransform.rotation = baseRotation; // Resets rotation (for tilt) to base before every move
             Move(direction); // Move according to direction
             Tilt(direction, 25); // Tilt 25 degrees around ship's y-axis while moving
         }

@@ -58,7 +58,7 @@ public class WaveManager : MonoBehaviour
     {
         foreach (Transform t in enemyLocations)
         {
-            EnemyController newEnemy = GameObject.Instantiate(enemyPrefab, this.transform.position, Quaternion.identity).GetComponent<EnemyController>();
+            EnemyController newEnemy = GameObject.Instantiate(enemyPrefab, this.transform.position, this.transform.rotation).GetComponent<EnemyController>();
 
             newEnemy.SetTargetLocation(t.position);
             

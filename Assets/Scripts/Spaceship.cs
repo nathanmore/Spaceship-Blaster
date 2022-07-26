@@ -15,9 +15,11 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     [SerializeField]
     protected SO_SpaceshipData shipData; // Data object for spaceship
     [SerializeField]
-    protected GameObject projectilePrefab;
-    [SerializeField]
     protected ProjectileFactory projectileFactory;
+    [SerializeField]
+    protected Transform shipModelTransform;
+
+    protected Quaternion baseRotation;
 
     public int ScoreValue { get { return shipData.scoreValue; } }
 
@@ -25,6 +27,8 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     public void Start()
     {
         shipData.CurrentHealth = shipData.MaxHealth;
+
+        baseRotation = shipModelTransform.rotation;
     }
 
     // Update is called once per frame
@@ -46,11 +50,11 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     {
       if(direction.x > 0)
       {
-        transform.Rotate(0, (-1) * angle, 0);
+        shipModelTransform.Rotate(0, (-1) * angle, 0);
       }
       else if(direction.x < 0)
       {
-        transform.Rotate(0, angle, 0);
+        shipModelTransform.Rotate(0, angle, 0);
       }
     }
 

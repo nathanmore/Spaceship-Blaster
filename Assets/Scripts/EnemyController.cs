@@ -37,12 +37,12 @@ public class EnemyController : Spaceship
         Vector3 curLoc = this.gameObject.transform.position;
         Vector3 distance = targetLoc - curLoc;
         Vector2 moveDirection2D = new Vector2(distance.normalized.x, distance.normalized.y);
-        transform.rotation = new Quaternion(0, 0, 180, 0); // Resets rotation (for tilt) to normal before every move
+        shipModelTransform.rotation = baseRotation; // Resets rotation (for tilt) to normal before every move
 
         if (distance.x > minDistance.x || distance.y > minDistance.y) // If not within minimum distance to target location
         {
             Move(moveDirection2D);
-            Tilt(moveDirection2D, -25); // Tilt 25 degrees around ship's y-axis while moving
+            Tilt(moveDirection2D, 25); // Tilt 25 degrees around ship's y-axis while moving
         } 
         else
         {

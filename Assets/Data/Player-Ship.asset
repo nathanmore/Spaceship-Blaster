@@ -17,3 +17,5 @@ MonoBehaviour:
   MovementSpeed: 10
   DodgeSpeed: 30
   scoreValue: 0
+  fireDelay: 0
+  weaponDamage: 1
