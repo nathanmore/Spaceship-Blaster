@@ -20,6 +20,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     protected Transform shipModelTransform;
 
     protected Quaternion baseRotation;
+    public SpaceshipDelegate shipDestroyedDelegate;
 
     public int ScoreValue { get { return shipData.scoreValue; } }
 
@@ -104,5 +105,12 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     public void DestroyShip()
     {
         Destroy(gameObject);
+        if (shipDestroyedDelegate != null)
+        {
+            shipDestroyedDelegate(this.gameObject);
+        }
     }
 }
+
+// Delegate for handling events
+public delegate void SpaceshipDelegate(GameObject objectRef);

@@ -10,7 +10,6 @@ public class EnemyController : Spaceship
     [SerializeField]
     private Vector3 minDistance = (0.2f)*Vector3.one;
 
-    public EnemyDelegate enemyDestroyedEvent;
     private bool locationReached = false;
     private bool weaponFiringActive = true;
 
@@ -53,15 +52,6 @@ public class EnemyController : Spaceship
     public void SetTargetLocation(Vector3 newLoc)
     {
         targetLocation = newLoc;
-    }
-
-    public void OnDestroy()
-    {
-        if (enemyDestroyedEvent != null)
-        {
-            //Tells listeneners that object is destroyed
-            enemyDestroyedEvent(this.gameObject.GetComponent<EnemyController>());
-        }
     }
 
     public IEnumerator FireWeapon()

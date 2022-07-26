@@ -64,14 +64,15 @@ public class WaveManager : MonoBehaviour
             
             enemies.Add(newEnemy);
 
-            newEnemy.enemyDestroyedEvent += RemoveEnemyOnDestroy;
+            newEnemy.shipDestroyedDelegate += RemoveEnemyOnDestroy;
 
             yield return new WaitForSeconds(spawnDelay);
         }
     }
 
-    public void RemoveEnemyOnDestroy(EnemyController enemyRef)
+    public void RemoveEnemyOnDestroy(GameObject enemyObjectRef)
     {
+        EnemyController enemyRef = enemyObjectRef.GetComponent<EnemyController>();
         enemies.Remove(enemyRef);
         scoreTracker.UpdateScore(enemyRef.ScoreValue);
     }
