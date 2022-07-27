@@ -25,7 +25,11 @@ public class PlayerController : Spaceship
     {
         base.Update(); // Call the child class update
 
-        if(performDodge == true) // Execute a dodge if performDodge tag is on
+    }
+
+    public void FixedUpdate()
+    {
+        if (performDodge == true) // Execute a dodge if performDodge tag is on
         {
             if (dodgeRot < 350) // Will rotate (roll) 350 degrees max, then reset to 0
             {
@@ -45,7 +49,6 @@ public class PlayerController : Spaceship
             Move(direction); // Move according to direction
             Tilt(direction, 25); // Tilt 25 degrees around ship's y-axis while moving
         }
-
     }
 
     // Called when dodge left action is performed
