@@ -14,6 +14,7 @@ public class ProjectileFactory : MonoBehaviour
         projectile.ObjectTag = objectTag;
         projectile.Direction = direction;
         projectile.ProjectileDamage = damage;
+        projectile.gameObject.transform.parent = null;
 
         return projectile;
     }
