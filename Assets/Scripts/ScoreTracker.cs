@@ -16,8 +16,8 @@ public class ScoreTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreTextAsset.text = scoreData.CurrentScore.ToString();
         scoreData.ResetCurrentScore();
+        scoreTextAsset.text = scoreData.CurrentScore.ToString();
 
         player.shipDestroyedDelegate += OnPlayerDefeated;
     }
@@ -31,7 +31,8 @@ public class ScoreTracker : MonoBehaviour
     public void OnPlayerDefeated(GameObject playerObj)
     {
         // Pause gameplay, update high score, and display end screen
-        Debug.Log("Game Over");
+        Time.timeScale = 0f;
+        
         SceneManager.LoadScene("MainMenu"); // Temporary transition
     }
 }
