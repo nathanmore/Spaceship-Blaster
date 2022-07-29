@@ -18,8 +18,6 @@ public class EnemyController : Spaceship
     {
         base.Update();
 
-        MoveToLocation(targetLocation);
-
         if (locationReached)
         {
             StartCoroutine(FireWeapon());
@@ -29,6 +27,11 @@ public class EnemyController : Spaceship
             StopCoroutine(FireWeapon());
         }
 
+    }
+
+    public void FixedUpdate()
+    {
+        MoveToLocation(targetLocation);
     }
 
     public void MoveToLocation(Vector3 targetLoc)
@@ -41,7 +44,7 @@ public class EnemyController : Spaceship
         if (distance.x > minDistance.x || distance.y > minDistance.y) // If not within minimum distance to target location
         {
             Move(moveDirection2D);
-            Tilt(moveDirection2D, 25); // Tilt 25 degrees around ship's y-axis while moving
+            Tilt(moveDirection2D, -25); // Tilt 25 degrees around ship's y-axis while moving
         } 
         else
         {

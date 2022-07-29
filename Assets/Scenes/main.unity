@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e432a0f58715e364b9ad70922122a6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6878004224753650351, guid: fab5578ecf1e8c64a83088088fe0c889, type: 3}
+  enemyPrefab: {fileID: 5554721009696006630, guid: 3d7d01dd39e5f4e42bcd4e893eb59297, type: 3}
   powerUpPrefabs: []
   waveTextAsset: {fileID: 511168795}
   enemyLocations:
