@@ -1729,6 +1729,10 @@ PrefabInstance:
       propertyPath: shipModelTransform
       value: 
       objectReference: {fileID: 592997}
+    - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+      propertyPath: dodgeRotationAmount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7364402061863566397, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
       propertyPath: m_Camera
       value: 

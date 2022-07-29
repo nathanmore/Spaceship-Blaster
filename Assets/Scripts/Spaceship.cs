@@ -60,7 +60,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     }
 
     // Quickly move ship to right if isRight is true, move to left otherwise
-    public void Dodge(bool isRight)
+    public void Dodge(bool isRight, int tiltRot)
     {
         if (isRight)
         {
@@ -68,14 +68,14 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
             Vector3 velocity = new Vector3(1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
             transform.position += velocity;
             // Change ship's rotation (in each frame, tilt 5 degrees to the right)
-            Tilt(new Vector2(1, 0), 5);
+            Tilt(new Vector2(1, 0), tiltRot);
         }
         else
         {
             Vector3 velocity = new Vector3(-1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
             transform.position += velocity;
 
-            Tilt(new Vector2(-1, 0), 5);
+            Tilt(new Vector2(-1, 0), tiltRot);
         }
     }
 

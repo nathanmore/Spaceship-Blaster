@@ -5,11 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Spaceship
 {
-    Vector2 direction = Vector2.zero; // Holds direction of movement. 0,0 by default
-
-    bool performDodge = false; // Tracks whether or not a dodge should be performed in this frame
-    bool isRight = false; // If dodge is being performed, keeps track of whether it is to the left or right
-    float dodgeRot = 0.0f; // Tracks how much the ship has been rotated if dodge roll is happening
+    private Vector2 direction = Vector2.zero; // Holds direction of movement. 0,0 by default
+    private bool performDodge = false; // Tracks whether or not a dodge should be performed in this frame
+    private bool isRight = false; // If dodge is being performed, keeps track of whether it is to the left or right
+    private int dodgeRot = 0; // Tracks how much the ship has been rotated if dodge roll is happening
 
     // Public accessor for shipData, for power-ups
     public SO_SpaceshipData ShipData { get { return shipData; } }
@@ -33,12 +32,12 @@ public class PlayerController : Spaceship
         {
             if (dodgeRot < 350) // Will rotate (roll) 350 degrees max, then reset to 0
             {
-                Dodge(isRight);
-                dodgeRot += 5; // To animate, there is a 5 degree rotation per frame
+                Dodge(isRight, shipData.DodgeRotation);
+                dodgeRot += shipData.DodgeRotation; // To animate, there is a 5 degree rotation per frame
             }
             else
             {
-                dodgeRot = 0.0f; // Completed one dodge/barrel roll, reset rotation back to 0
+                dodgeRot = 0; // Completed one dodge/barrel roll, reset rotation back to 0
                 shipModelTransform.rotation = baseRotation;
                 performDodge = false;
             }
