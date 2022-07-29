@@ -13,6 +13,11 @@ public class SO_ScoreData : ScriptableObject
     public int CurrentScore { get { return currentScore; } }
     public int HighScore { get { return highScore; } }
 
+    public void Awake()
+    {
+        highScore = PlayerPrefs.GetInt("HighScore");
+    }
+
     public void IncreaseScore(int points)
     {
         currentScore += points;
@@ -26,5 +31,12 @@ public class SO_ScoreData : ScriptableObject
     public void ResetHighScore()
     {
         highScore = 0;
+        PlayerPrefs.SetInt("HighScore", highScore);
+    }
+
+    public void UpdateHighScore()
+    {
+        highScore = currentScore;
+        PlayerPrefs.SetInt("HighScore", currentScore);
     }
 }

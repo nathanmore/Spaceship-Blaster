@@ -33,6 +33,6 @@ public class ScoreTracker : MonoBehaviour
         // Pause gameplay, update high score, and display end screen
         Time.timeScale = 0f;
         
-        SceneManager.LoadScene("MainMenu"); // Temporary transition
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive); // Temporary transition
     }
 }
