@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class GameOverManager : MonoBehaviour
+public class GameOverManager : MenuButtons
 {
     [SerializeField]
     private SO_ScoreData scoreData;
@@ -33,22 +33,5 @@ public class GameOverManager : MonoBehaviour
         newHighScoreText.SetActive(newHighScore); // If there is not a new high score, disable this object, otherwise enable it.
 
         scoreValueDisplay.text = scoreData.CurrentScore.ToString();
-    }
-
-    public void PlayAgain()
-    {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene("main");
-    }
-
-    public void MainMenu()
-    {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }

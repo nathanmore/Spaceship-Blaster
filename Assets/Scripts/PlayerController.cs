@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Spaceship
 {
@@ -9,6 +10,7 @@ public class PlayerController : Spaceship
     private bool performDodge = false; // Tracks whether or not a dodge should be performed in this frame
     private bool isRight = false; // If dodge is being performed, keeps track of whether it is to the left or right
     private int dodgeRot = 0; // Tracks how much the ship has been rotated if dodge roll is happening
+    private bool gamePaused = false;
 
     // Public accessor for shipData, for power-ups
     public SO_SpaceshipData ShipData { get { return shipData; } }
@@ -84,7 +86,18 @@ public class PlayerController : Spaceship
     {
         if (context.performed)
         {
-            Debug.Log("Pause Game");
+            if (gamePaused == false)
+            {
+                Time.timeScale = 0.0f;
+                gamePaused = true;
+                SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+            }
+            else if (gamePaused == true)
+            {
+                SceneManager.UnloadSceneAsync("PauseMenu");
+                Time.timeScale = 1.0f;
+                gamePaused = false;
+            }
         }
     }
 }

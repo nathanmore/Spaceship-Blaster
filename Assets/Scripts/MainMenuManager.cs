@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManager : MenuButtons
 {
     [SerializeField]
     private TextMeshProUGUI highScoreText;
@@ -15,22 +15,5 @@ public class MainMenuManager : MonoBehaviour
     {
         // Update highScoreText to display current high score
         highScoreText.text = scoreData.HighScore.ToString();
-    }
-
-    // Start new game: transition to main scene
-    public void PlayGame()
-    {
-        SceneManager.LoadScene("main");
-    }
-
-    // Open the options menu
-    public void Options()
-    {
-
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }
