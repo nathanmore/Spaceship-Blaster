@@ -12,12 +12,22 @@ public class MenuButtons : MonoBehaviour
     }
     public void OpenOptions()
     {
+        SceneManager.LoadScene("OptionsMenu", LoadSceneMode.Additive);
+    }
 
+    public void CloseOptionsMenu()
+    {
+        SceneManager.UnloadSceneAsync("OptionsMenu");
     }
 
     public void OpenControls()
     {
+        SceneManager.LoadScene("ControlsMenu", LoadSceneMode.Additive);
+    }
 
+    public void CloseControlsMenu()
+    {
+        SceneManager.UnloadSceneAsync("ControlsMenu");
     }
 
     public void OpenMainMenu()
