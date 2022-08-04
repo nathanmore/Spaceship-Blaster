@@ -11,10 +11,10 @@ public static class SoundManager{
         playerPowerup,
     }
 
-    public static void PlaySound(Sound sound){
+    public static void PlaySound(Sound sound, float volume = 0.5f){
       GameObject soundGameObject = new GameObject("Sound");
       AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-      audioSource.PlayOneShot(GetAudioClip(sound));  
+      audioSource.PlayOneShot(GetAudioClip(sound), volume);  
     }
 
     private static AudioClip GetAudioClip (Sound sound){
