@@ -78,6 +78,7 @@ public class PlayerController : Spaceship
         if (context.performed)
         {
             Fire(); // Calls fire function in base class
+            SoundManager.PlaySound();
         }
     }
 
