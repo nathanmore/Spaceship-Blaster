@@ -11,7 +11,9 @@ public class GameAssets : MonoBehaviour
         return i;
     }
  }
+
  public SoundAudioClip[] soundAudioClipArray;
+ 
  [System.Serializable]
  public class SoundAudioClip{
     public SoundManager.Sound sound;
