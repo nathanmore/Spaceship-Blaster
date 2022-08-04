@@ -8,11 +8,18 @@ public class EnemyController : Spaceship
     [SerializeField]
     private Vector3 targetLocation;
     [SerializeField]
-    private Vector3 minDistance = (0.2f)*Vector3.one;
+    private Vector3 minDistance = (0.1f)*Vector3.one;
 
     private bool locationReached = false;
     private bool weaponFiringActive = true;
 
+    // Called when object is enabled, before Start
+    public void OnEnable()
+    {
+        // Clones the master data file so it does not make changes to it during runtime.
+        SO_SpaceshipData clone = Instantiate(shipData);
+        shipData = clone;
+    }
 
     new public void Update()
     {
@@ -41,8 +48,9 @@ public class EnemyController : Spaceship
         Vector2 moveDirection2D = new Vector2(distance.normalized.x, distance.normalized.y);
         shipModelTransform.rotation = baseRotation; // Resets rotation (for tilt) to normal before every move
 
-        if (distance.x > minDistance.x || distance.y > minDistance.y) // If not within minimum distance to target location
+        if (Mathf.Abs(distance.x) > minDistance.x || Mathf.Abs(distance.y) > minDistance.y) // If not within minimum distance to target location
         {
+            locationReached = false;
             Move(moveDirection2D);
             Tilt(moveDirection2D, -25); // Tilt 25 degrees around ship's y-axis while moving
         } 
