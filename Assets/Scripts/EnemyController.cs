@@ -13,6 +13,13 @@ public class EnemyController : Spaceship
     private bool locationReached = false;
     private bool weaponFiringActive = true;
 
+    // Called when object is enabled, before Start
+    public void OnEnable()
+    {
+        // Clones the master data file so it does not make changes to it during runtime.
+        SO_SpaceshipData clone = Instantiate(shipData);
+        shipData = clone;
+    }
 
     new public void Update()
     {
