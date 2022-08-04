@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPowerUp : MonoBehaviour
+public class DoublePointsPowerUp : MonoBehaviour
 {
-    [SerializeField]
-    private int healthAward;
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -15,13 +12,7 @@ public class HealthPowerUp : MonoBehaviour
 
             if (player != null)
             {
-                player.ShipData.CurrentHealth += healthAward;
-
-                if (player.ShipData.CurrentHealth > player.ShipData.MaxHealth)
-                {
-                    player.ShipData.CurrentHealth = player.ShipData.MaxHealth;
-                }
-
+                player.ActivateDoublePoints();
                 Destroy(this.gameObject);
             }
         }

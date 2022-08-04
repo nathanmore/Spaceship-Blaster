@@ -10,8 +10,11 @@ public class SO_ScoreData : ScriptableObject
     [SerializeField]
     private int highScore;
 
+    private bool doublePoints = false;
+
     public int CurrentScore { get { return currentScore; } }
     public int HighScore { get { return highScore; } }
+    public bool DoublePoints { get { return doublePoints; } }
 
     public void Awake()
     {
@@ -20,7 +23,15 @@ public class SO_ScoreData : ScriptableObject
 
     public void IncreaseScore(int points)
     {
-        currentScore += points;
+        if (doublePoints == true)
+        {
+            currentScore += (points*2);
+        }
+        else
+        {
+            currentScore += points;
+        }
+        
     }
 
     public void ResetCurrentScore()
@@ -38,5 +49,10 @@ public class SO_ScoreData : ScriptableObject
     {
         highScore = currentScore;
         PlayerPrefs.SetInt("HighScore", currentScore);
+    }
+
+    public void SetDoublePointsBool(bool newValue)
+    {
+        doublePoints = newValue;
     }
 }

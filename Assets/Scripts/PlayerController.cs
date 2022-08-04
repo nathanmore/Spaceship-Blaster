@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : Spaceship
 {
+    [SerializeField]
+    private float doublePointsDuration = 10.0f;
+
+    public SO_ScoreData ScoreAsset;
+
     private Vector2 direction = Vector2.zero; // Holds direction of movement. 0,0 by default
     private bool performDodge = false; // Tracks whether or not a dodge should be performed in this frame
     private bool isRight = false; // If dodge is being performed, keeps track of whether it is to the left or right
@@ -100,5 +105,19 @@ public class PlayerController : Spaceship
                 gamePaused = false;
             }
         }
+    }
+
+    public void ActivateDoublePoints()
+    {
+        StartCoroutine(DoublePointsCoroutine());
+    }
+
+    public IEnumerator DoublePointsCoroutine()
+    {
+        ScoreAsset.SetDoublePointsBool(true);
+
+        yield return new WaitForSeconds(doublePointsDuration);
+
+        ScoreAsset.SetDoublePointsBool(false);
     }
 }
