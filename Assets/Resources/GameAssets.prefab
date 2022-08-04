@@ -44,4 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2983d087ab746d0439d9460e431f154b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttack: {fileID: 8300000, guid: a76e8f8120ccefc4cb8dc0436947f8cd, type: 3}
+  soundAudioClipArray:
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: 2e5c400924833f54c93156364fc16629, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: a76e8f8120ccefc4cb8dc0436947f8cd, type: 3}
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: 6e73539b4b146164393c63557ed73bf2, type: 3}
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: 818c67bf9ce20c34abcade16f39b3cd4, type: 3}

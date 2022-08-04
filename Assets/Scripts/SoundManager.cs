@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class SoundManager{
+  
     public enum Sound{
         enemyDie,
         playerAttack,
