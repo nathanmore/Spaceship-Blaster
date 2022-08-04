@@ -19,9 +19,19 @@ public class WaveManager : MonoBehaviour
     private ScoreTracker scoreTracker;
     [SerializeField]
     private float spawnDelay = 1.0f;
+    [SerializeField]
+    private float pSpawnMinX;
+    [SerializeField]
+    private float pSpawnMaxX;
+    [SerializeField]
+    private float pSpawnMinY;
+    [SerializeField]
+    private float pSpawnMaxY;
+    [SerializeField]
+    private int waveCounter;
 
-    public int waveCounter;
     private List<EnemyController> enemies = new List<EnemyController>();
+    private GameObject activePowerUp = null;
 
     // Public accessor for enemies list
     public List<EnemyController> Enemies { get { return enemies; } }
@@ -53,12 +63,12 @@ public class WaveManager : MonoBehaviour
             StartCoroutine(SpawnEnemies());
 
             // Spawn power-ups
+            HandlePowerUps();
         }
     }
 
     public IEnumerator SpawnEnemies()
     {
-        
         int counter = 1;
         foreach (Transform t in enemyLocations)
         {
@@ -96,5 +106,28 @@ public class WaveManager : MonoBehaviour
         EnemyController enemyRef = enemyObjectRef.GetComponent<EnemyController>();
         enemies.Remove(enemyRef);
         scoreTracker.UpdateScore(enemyRef.ScoreValue);
+    }
+
+    public void HandlePowerUps()
+    {
+        bool spawnPowerUp = false;
+        if (waveCounter % 2 == 0)
+        {
+            int val = Random.Range(0, 3);
+            if (val != 0)
+            {
+                spawnPowerUp = true;
+            }
+        }
+        if (activePowerUp == null && spawnPowerUp == true)
+        {
+            int i = Random.Range(0, 2);
+
+            float x = Random.Range(pSpawnMinX, pSpawnMaxX);
+            float y = Random.Range(pSpawnMinY, pSpawnMaxY);
+            Vector3 spawnPosition = new Vector3(x, y, 0);
+
+            activePowerUp = GameObject.Instantiate(powerUpPrefabs[i], spawnPosition, Quaternion.identity);
+        }
     }
 }
