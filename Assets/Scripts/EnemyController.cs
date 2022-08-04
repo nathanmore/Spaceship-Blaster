@@ -80,6 +80,3 @@ public class EnemyController : Spaceship
         }
     }
 }
-
-// Delegate for handling events
-public delegate void EnemyDelegate(EnemyController enemyRef);
