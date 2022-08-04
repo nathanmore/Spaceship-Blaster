@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Options-Data", menuName = "ScriptableObjects/SO_OptionsData", order = 1)]
-public class SO_OptionsData : ScriptableObject
+public static class OptionSettings
 {
     [SerializeField]
-    private float defaultSFXVolume;
+    private static float defaultSFXVolume;
     [SerializeField]
-    private float defaultMusicVolume;
+    private static float defaultMusicVolume;
 
-    private float sfxVolume;
-    private float musicVolume;
-    private bool muteAudio;
+    private static float sfxVolume;
+    private static float musicVolume;
+    private static bool muteAudio;
 
-    public float SFXVolume { get { return sfxVolume; } }
-    public float MusicVolume { get { return musicVolume; } }
-    public bool IsAudioMute { get { return muteAudio; } }
+    public static float SFXVolume { get { return sfxVolume; } }
+    public static float MusicVolume { get { return musicVolume; } }
+    public static bool IsAudioMute { get { return muteAudio; } }
 
-    public void Awake()
+    public static void Awake()
     {
         if (PlayerPrefs.HasKey("sfxVolume"))
         {
@@ -56,7 +55,7 @@ public class SO_OptionsData : ScriptableObject
         }
     }
 
-    public void SetSFXVolume(float newValue)
+    public static void SetSFXVolume(float newValue)
     {
         if (newValue < 0f)
         {
@@ -74,7 +73,7 @@ public class SO_OptionsData : ScriptableObject
         PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
     }
 
-    public void SetMusicVolume(float newValue)
+    public static void SetMusicVolume(float newValue)
     {
         if (newValue < 0f)
         {
@@ -92,7 +91,7 @@ public class SO_OptionsData : ScriptableObject
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
     }
 
-    public void SetMuteValue(bool newValue)
+    public static void SetMuteValue(bool newValue)
     {
         muteAudio = newValue;
 
