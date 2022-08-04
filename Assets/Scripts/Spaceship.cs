@@ -87,6 +87,8 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
 
         // Instantiate projectile
         projectileFactory.InstantiateProjectile(this.gameObject.tag, projectileDirection, shipData.weaponDamage);
+
+        SoundManager.PlaySound(SoundManager.Sound.playerAttack);
     }
 
     // Required method for IDamageable interface
