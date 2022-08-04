@@ -5,9 +5,9 @@ using UnityEngine;
 public static class OptionSettings
 {
     [SerializeField]
-    private static float defaultSFXVolume;
+    private static float defaultSFXVolume = 0.5f;
     [SerializeField]
-    private static float defaultMusicVolume;
+    private static float defaultMusicVolume = 0.8f;
 
     private static float sfxVolume;
     private static float musicVolume;
@@ -17,7 +17,7 @@ public static class OptionSettings
     public static float MusicVolume { get { return musicVolume; } }
     public static bool IsAudioMute { get { return muteAudio; } }
 
-    public static void Awake()
+    public static void SetupOptions()
     {
         if (PlayerPrefs.HasKey("sfxVolume"))
         {

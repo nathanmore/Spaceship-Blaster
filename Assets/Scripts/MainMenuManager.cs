@@ -11,6 +11,11 @@ public class MainMenuManager : MenuButtons
     [SerializeField]
     private SO_ScoreData scoreData;
 
+    public void Awake()
+    {
+        OptionSettings.SetupOptions(); // Sets saved data for options 
+    }
+
     public void Start()
     {
         // Update highScoreText to display current high score
