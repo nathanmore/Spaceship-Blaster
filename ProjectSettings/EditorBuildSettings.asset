@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OptionsMenu.unity
     guid: b78c7d713e12cb647a6baee84ec921c9
+  - enabled: 1
+    path: Assets/Scenes/WebGLQuit.unity
+    guid: afc49b053a99c194bbe141d0ded56106
   m_configObjects: {}

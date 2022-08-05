@@ -839,6 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ef02252546a32408a379712ad63fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollSpeedAdjustment: 0.75
 --- !u!64 &653444762
 MeshCollider:
   m_ObjectHideFlags: 0
