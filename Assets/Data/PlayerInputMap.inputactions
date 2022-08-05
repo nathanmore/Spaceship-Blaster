@@ -318,6 +318,17 @@
                 },
                 {
                     "name": "",
+                    "id": "64dfee9a-69d0-45f6-8bee-c9edebc2d49e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0089ac6e-5912-40f0-a700-68ef45a85331",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
@@ -332,6 +343,17 @@
                     "id": "6be1421d-e585-4a04-895c-4e6797e289d0",
                     "path": "<Keyboard>/q",
                     "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dodge-Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9da3e4c3-3ad7-40c2-836e-07dd54852602",
+                    "path": "<Keyboard>/a",
+                    "interactions": "MultiTap",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Dodge-Left",
@@ -362,6 +384,17 @@
                 },
                 {
                     "name": "",
+                    "id": "bdb5887c-1a75-417c-a98a-69e1789ebae2",
+                    "path": "<Keyboard>/d",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dodge-Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f50c321b-eabc-4fa3-8cf4-99027b885693",
                     "path": "<Gamepad>/start",
                     "interactions": "",
@@ -375,6 +408,17 @@
                     "name": "",
                     "id": "0797b255-f770-405b-825f-eba67d27f81c",
                     "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cac2e592-0fb6-40a7-819d-2ed38e27cf85",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
