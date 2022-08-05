@@ -64,7 +64,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &4607983283902558247
 MonoBehaviour:
@@ -81,6 +81,7 @@ MonoBehaviour:
   shipData: {fileID: 11400000, guid: ae2637fc3a3e39747b0b4ff7b3204f65, type: 2}
   projectileFactory: {fileID: 6647507340255217472}
   shipModelTransform: {fileID: 3204743452069081496}
+  impactImpulse: 30
   targetLocation: {x: 0, y: 0, z: 0}
   minDistance: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!1 &3603777985394036285

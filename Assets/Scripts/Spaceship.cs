@@ -18,9 +18,12 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     protected ProjectileFactory projectileFactory;
     [SerializeField]
     protected Transform shipModelTransform;
+    [SerializeField]
+    private float impactImpulse = 40.0f;
 
     protected Quaternion baseRotation;
     public SpaceshipDelegate shipDestroyedDelegate;
+    private bool movementEnabled = true;
 
     public int ScoreValue { get { return shipData.scoreValue; } }
 
@@ -41,41 +44,50 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     // Moves ship on x/y axis according to normalized vector passed in for direction
     public void Move(Vector2 direction)
     {
-        // Change position of ship
-        Vector3 velocity = new Vector3(direction.x, direction.y, 0) * shipData.MovementSpeed * Time.deltaTime;
-        transform.position += velocity;
+        if (movementEnabled)
+        {
+            // Change position of ship
+            Vector3 velocity = new Vector3(direction.x, direction.y, 0) * shipData.MovementSpeed * Time.deltaTime;
+            transform.position += velocity;
+        }
     }
 
     // Tilts ship around y-axis according to the given angle and which direction it's going
     public void Tilt(Vector2 direction, int angle)
     {
-      if(direction.x > 0)
-      {
-        shipModelTransform.Rotate(0, (-1) * angle, 0);
-      }
-      else if(direction.x < 0)
-      {
-        shipModelTransform.Rotate(0, angle, 0);
-      }
+        if (movementEnabled)
+        {
+            if (direction.x > 0)
+            {
+                shipModelTransform.Rotate(0, (-1) * angle, 0);
+            }
+            else if (direction.x < 0)
+            {
+                shipModelTransform.Rotate(0, angle, 0);
+            }
+        }
     }
 
     // Quickly move ship to right if isRight is true, move to left otherwise
     public void Dodge(bool isRight, int tiltRot)
     {
-        if (isRight)
+        if (movementEnabled)
         {
-            // Change ship's location
-            Vector3 velocity = new Vector3(1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
-            transform.position += velocity;
-            // Change ship's rotation (in each frame, tilt 5 degrees to the right)
-            Tilt(new Vector2(1, 0), tiltRot);
-        }
-        else
-        {
-            Vector3 velocity = new Vector3(-1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
-            transform.position += velocity;
+            if (isRight)
+            {
+                // Change ship's location
+                Vector3 velocity = new Vector3(1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
+                transform.position += velocity;
+                // Change ship's rotation (in each frame, tilt 5 degrees to the right)
+                Tilt(new Vector2(1, 0), tiltRot);
+            }
+            else
+            {
+                Vector3 velocity = new Vector3(-1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
+                transform.position += velocity;
 
-            Tilt(new Vector2(-1, 0), tiltRot);
+                Tilt(new Vector2(-1, 0), tiltRot);
+            }
         }
     }
 
@@ -114,6 +126,29 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
         {
             shipDestroyedDelegate(this.gameObject);
         }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Spaceship collidingShip = collision.gameObject.GetComponent<Spaceship>();
+        if (collidingShip != null)
+        {
+            collidingShip.Damage(1);
+
+            Vector3 impactDirection = (collidingShip.transform.position - this.transform.position).normalized;
+
+            StartCoroutine(DisableMovement((impactImpulse/200f)));
+            //collidingShip.transform.position += impactDirection * impactImpulse;
+            this.transform.rotation = baseRotation;
+            this.transform.position += -impactDirection * impactImpulse * Time.deltaTime;
+        }
+    }
+
+    public IEnumerator DisableMovement(float seconds)
+    {
+        movementEnabled = false;
+        yield return new WaitForSeconds(seconds);
+        movementEnabled = true;
     }
 }
 
