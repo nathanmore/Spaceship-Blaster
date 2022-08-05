@@ -30,6 +30,13 @@ public class BackgroundMusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_AudioSource.volume = OptionSettings.MusicVolume;
+        if (OptionSettings.IsAudioMute == true)
+        {
+            m_AudioSource.volume = 0f;
+        }
+        else
+        {
+            m_AudioSource.volume = OptionSettings.MusicVolume;
+        }
     }
 }
