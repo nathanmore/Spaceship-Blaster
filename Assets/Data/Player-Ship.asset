@@ -20,3 +20,7 @@ MonoBehaviour:
   scoreValue: 5
   fireDelay: 0
   weaponDamage: 1
+  laserAudio: 1
+  laserVolumeOffset: 1
+  hitAudio: 4
+  hitVolumeOffset: 1

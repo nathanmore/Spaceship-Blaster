@@ -20,4 +20,16 @@ public class SO_SpaceshipData : ScriptableObject
     public float fireDelay;
 
     public int weaponDamage;
+
+    public SoundManager.Sound laserAudio;
+
+    public float laserVolumeOffset = 1.0f;
+
+    public SoundManager.Sound hitAudio;
+
+    public float hitVolumeOffset = 1.0f;
+
+    public SoundManager.Sound destructionAudio;
+
+    public float destructionVolumeOffset = 1.0f;
 }

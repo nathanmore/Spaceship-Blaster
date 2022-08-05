@@ -9,12 +9,15 @@ public static class SoundManager{
         playerAttack,
         playerHit,
         playerPowerup,
+        playerHit2,
+        hit,
+        shoot
     }
 
-    public static void PlaySound(Sound sound){
+    public static void PlaySound(Sound sound, float volumeOffset = 1.0f){
       GameObject soundGameObject = new GameObject("Sound");
       AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-      audioSource.PlayOneShot(GetAudioClip(sound), OptionSettings.SFXVolume);  
+      audioSource.PlayOneShot(GetAudioClip(sound), (OptionSettings.SFXVolume * volumeOffset));  
     }
 
     private static AudioClip GetAudioClip (Sound sound){
@@ -23,7 +26,7 @@ public static class SoundManager{
           return soundAudioClip.audioClip;
         }
       }
-     Debug.LogError("Sound"+ sound+"not found!");
+     Debug.LogError("Sound " + sound + " not found!");
      return null;
         
       }

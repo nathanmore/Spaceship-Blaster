@@ -88,7 +88,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
         // Instantiate projectile
         projectileFactory.InstantiateProjectile(this.gameObject.tag, projectileDirection, shipData.weaponDamage);
 
-        SoundManager.PlaySound(SoundManager.Sound.playerAttack);
+        SoundManager.PlaySound(shipData.laserAudio, shipData.laserVolumeOffset);
     }
 
     // Required method for IDamageable interface
@@ -98,6 +98,8 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     {
         shipData.CurrentHealth -= damageTaken;
 
+        SoundManager.PlaySound(shipData.hitAudio, shipData.hitVolumeOffset);
+
         if (shipData.CurrentHealth <= 0)
         {
             DestroyShip();
@@ -106,6 +108,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
 
     public void DestroyShip()
     {
+        SoundManager.PlaySound(shipData.destructionAudio, shipData.destructionVolumeOffset);
         Destroy(gameObject);
         if (shipDestroyedDelegate != null)
         {
