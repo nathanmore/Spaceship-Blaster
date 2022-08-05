@@ -1893,6 +1893,26 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+      propertyPath: xBounds
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+      propertyPath: xMaxLimit
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+      propertyPath: xMinLimit
+      value: -14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+      propertyPath: yMaxLimit
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+      propertyPath: yMinLimit
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
       propertyPath: impactImpulse
       value: 40
       objectReference: {fileID: 0}
@@ -1910,7 +1930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7364402061863566398, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: -6.98
       objectReference: {fileID: 0}
     - target: {fileID: 7364402061863566398, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
       propertyPath: m_LocalPosition.z
