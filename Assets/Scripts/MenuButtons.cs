@@ -37,6 +37,13 @@ public class MenuButtons : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            SceneManager.LoadScene("WebGLQuit");
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
 }
