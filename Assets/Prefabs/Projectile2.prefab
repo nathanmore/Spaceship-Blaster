@@ -92,7 +92,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.13084155
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -104,8 +104,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.2798764, b: 0.12549019, a: 1}
-      key1: {r: 0.9811321, g: 0.663771, b: 0.3924528, a: 1}
+      key0: {r: 0.80294377, g: 0.013207495, b: 1, a: 1}
+      key1: {r: 0.98039216, g: 0.3921569, b: 0.7454548, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 7928754296326728984}
   - component: {fileID: 580559350530504219}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 375b0f424e31daf48a7b915fe5d7a35d, type: 2}
+  - {fileID: 2100000, guid: 1babfc5f2301df0489eb4fae8a21c380, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

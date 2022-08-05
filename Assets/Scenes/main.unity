@@ -1892,6 +1892,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1996850281208904984, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 7928754296326728985, guid: 3217d218689276144b867780cac2273c, type: 3}
     - target: {fileID: 7364402061863566396, guid: 600c9ccef8b69b64686ce609de46bb10, type: 3}
       propertyPath: doublePointsDuration
       value: 6
