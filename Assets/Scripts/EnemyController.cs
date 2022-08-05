@@ -71,6 +71,7 @@ public class EnemyController : Spaceship
         {
             Fire();
             weaponFiringActive = false;
+            float delay = Random.Range(shipData.fireDelay * 0.75f, shipData.fireDelay * 1.25f);
             yield return new WaitForSeconds(shipData.fireDelay);
             weaponFiringActive = true;
         }
