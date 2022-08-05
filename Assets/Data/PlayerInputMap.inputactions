@@ -340,6 +340,17 @@
                 },
                 {
                     "name": "",
+                    "id": "50a91566-5c79-4bf2-9fb7-1b1a499b49f0",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dodge-Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7fd12db6-3a0a-479f-b892-398e1618541c",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -365,6 +376,17 @@
                     "id": "5059a7bb-1e7b-430b-8716-df4f54cc3952",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dodge-Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8bfde818-9c7b-4e89-8a0f-d72aaaefa101",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Dodge-Right",
