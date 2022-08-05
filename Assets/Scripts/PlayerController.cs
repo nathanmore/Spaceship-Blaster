@@ -8,6 +8,10 @@ public class PlayerController : Spaceship
 {
     [SerializeField]
     private float doublePointsDuration = 10.0f;
+    [SerializeField]
+    private float xBounds = 13f;
+    [SerializeField]
+    private float yBounds = 7f;
 
     public SO_ScoreData ScoreAsset;
 
@@ -52,6 +56,23 @@ public class PlayerController : Spaceship
         else // Did not need to perform a dodge, check for movement
         {
             shipModelTransform.rotation = baseRotation; // Resets rotation (for tilt) to base before every move
+            if (transform.position.x <= -xBounds && direction.x < 0)
+            {
+                direction.x = 0;
+            } 
+            if (transform.position.x >= xBounds && direction.x > 0)
+            {
+                direction.x = 0;
+            }
+            if (transform.position.y <= -yBounds && direction.y < 0)
+            {
+                direction.y = 0;
+            }
+            if (transform.position.y >= yBounds && direction.y > 0)
+            {
+                direction.y = 0;
+            }
+            
             Move(direction); // Move according to direction
             Tilt(direction, 25); // Tilt 25 degrees around ship's y-axis while moving
         }
