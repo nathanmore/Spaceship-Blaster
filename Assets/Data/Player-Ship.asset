@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player-Ship
   m_EditorClassIdentifier: 
   MaxHealth: 4
-  CurrentHealth: 4
+  CurrentHealth: 0
   MovementSpeed: 10
   DodgeSpeed: 12
   DodgeRotation: 20
@@ -21,6 +21,8 @@ MonoBehaviour:
   fireDelay: 0
   weaponDamage: 1
   laserAudio: 1
-  laserVolumeOffset: 1
+  laserVolumeOffset: 0.5
   hitAudio: 4
   hitVolumeOffset: 1
+  destructionAudio: 2
+  destructionVolumeOffset: 1

@@ -21,6 +21,8 @@ MonoBehaviour:
   fireDelay: 1
   weaponDamage: 1
   laserAudio: 6
-  laserVolumeOffset: 1
+  laserVolumeOffset: 0.8
   hitAudio: 5
-  hitVolumeOffset: 1
+  hitVolumeOffset: 0.8
+  destructionAudio: 0
+  destructionVolumeOffset: 0.2

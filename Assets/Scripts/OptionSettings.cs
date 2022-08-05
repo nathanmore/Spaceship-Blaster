@@ -21,7 +21,7 @@ public static class OptionSettings
     {
         if (PlayerPrefs.HasKey("sfxVolume"))
         {
-            sfxVolume = PlayerPrefs.GetFloat("sfxvolume");
+            sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
         }
         else
         {
