@@ -29,6 +29,8 @@ public class WaveManager : MonoBehaviour
     private float pSpawnMaxY;
     [SerializeField]
     private int waveCounter;
+    [SerializeField]
+    private int difficultyIncrements = 5;
 
     private List<EnemyController> enemies = new List<EnemyController>();
     private GameObject activePowerUp = null;
@@ -72,11 +74,11 @@ public class WaveManager : MonoBehaviour
         int counter = 1;
         foreach (Transform t in enemyLocations)
         {
-            if (counter <= 3 || waveCounter >= 6)
+            if (counter <= 3 || waveCounter >= difficultyIncrements)
             {
                 EnemyController newEnemy = null;
 
-                if ((waveCounter >= 12 && waveCounter < 18 && (counter == 2 || counter == 3)) || (waveCounter >= 18 && waveCounter < 24 && (counter == 1 || counter == 4 || counter == 5)) || waveCounter >= 24)
+                if ((waveCounter >= 2*difficultyIncrements && waveCounter < 3*difficultyIncrements && (counter == 2 || counter == 3)) || (waveCounter >= 3*difficultyIncrements && waveCounter < 4*difficultyIncrements && (counter == 1 || counter == 4 || counter == 5)) || waveCounter >= 4*difficultyIncrements)
                 {
                     newEnemy = GameObject.Instantiate(advancedEnemyPrefab, this.transform.position, this.transform.rotation).GetComponent<EnemyController>();
                 }

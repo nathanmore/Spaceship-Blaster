@@ -94,10 +94,7 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
 
             StartCoroutine(DamageFlash()); // Coroutine to make ship flash red when damaged
 
-            if (shipData.CurrentHealth <= 0)
-            {
-                DestroyShip();
-            }
+            // Moved destroy method call into DamageFlash() Coroutine
         }
     }
 
@@ -116,8 +113,13 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
       }
       yield return new WaitForSeconds(0.2f); // Hold red color for 0.2 seconds to create flash effect
 
-      // Loop through both lists again, returning each object's color to its original
-      for(int i = 0; i < colorList.Count; i++)
+        if (shipData.CurrentHealth <= 0) // If ship has no health, destroy ship
+        {
+            DestroyShip();
+        }
+
+        // Loop through both lists again, returning each object's color to its original
+        for (int i = 0; i < colorList.Count; i++)
       {
         renderers[i].material.color = colorList[i];
       }

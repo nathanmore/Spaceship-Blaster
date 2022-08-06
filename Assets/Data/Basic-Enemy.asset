@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Basic-Enemy
   m_EditorClassIdentifier: 
   MaxHealth: 1
-  CurrentHealth: -1
+  CurrentHealth: 1
   MovementSpeed: 10
   DodgeSpeed: 0
   DodgeRotation: 0

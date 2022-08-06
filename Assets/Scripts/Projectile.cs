@@ -30,14 +30,13 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    // When projectile hits damageable object, set hit to true, deal damage, and destroy projectile
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        IDamageable<int> impact = collision.gameObject.GetComponent<IDamageable<int>>();
+        IDamageable<int> impact = other.gameObject.GetComponent<IDamageable<int>>();
 
         if (impact != null)
         {
-            if (collision.gameObject.tag != ObjectTag)
+            if (other.gameObject.tag != ObjectTag)
             {
                 impact.Damage(ProjectileDamage);
                 Destroy(this.gameObject);

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4955cc0793f0204bbbcaa29921f02fb, type: 3}
   m_Name: AdvancedEnemy
   m_EditorClassIdentifier: 
-  MaxHealth: 2
-  CurrentHealth: 2
+  MaxHealth: 3
+  CurrentHealth: 3
   MovementSpeed: 10
   DodgeSpeed: 0
   DodgeRotation: 0
