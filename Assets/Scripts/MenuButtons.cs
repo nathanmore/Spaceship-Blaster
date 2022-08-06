@@ -39,6 +39,7 @@ public class MenuButtons : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
+            OptionSettings.SystemMute();
             SceneManager.LoadScene("WebGLQuit");
         }
         else

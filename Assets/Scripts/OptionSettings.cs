@@ -104,4 +104,9 @@ public static class OptionSettings
             PlayerPrefs.SetInt("MuteAudio", 1);
         }
     }
+
+    public static void SystemMute()
+    {
+        muteAudio = true;
+    }
 }
