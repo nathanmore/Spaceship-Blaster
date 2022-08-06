@@ -12,7 +12,7 @@ public class DoublePointsPowerUp : MonoBehaviour
 
             if (player != null)
             {
-                SoundManager.PlaySound(SoundManager.Sound.playerPowerup);
+                SoundManager.PlaySound(SoundManager.Sound.playerPowerup, 1.1f);
 
                 player.ActivateDoublePoints();
                 Destroy(this.gameObject);

@@ -25,4 +25,4 @@ MonoBehaviour:
   hitAudio: 5
   hitVolumeOffset: 0.8
   destructionAudio: 0
-  destructionVolumeOffset: 0.1
+  destructionVolumeOffset: 0.2
