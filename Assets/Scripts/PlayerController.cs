@@ -30,32 +30,41 @@ public class PlayerController : Spaceship
         direction  = context.ReadValue<Vector2>();
     }
 
-    // Update, called every frame
-    new public void Update()
-    {
-        base.Update(); // Call the child class update
-
-    }
-
     public void FixedUpdate()
     {
         if (performDodge == true) // Execute a dodge if performDodge tag is on
         {
             if (dodgeRot < 350) // Will rotate (roll) 350 degrees max, then reset to 0
             {
-                Dodge(isRight, shipData.DodgeRotation);
+                if (dodgeRot <= 180)
+                {
+                    Dodge(isRight, shipData.DodgeRotation, -1);
+                }
+                else
+                {
+                    Dodge(isRight, shipData.DodgeRotation, 1);
+                }
+                //Dodge(isRight, shipData.DodgeRotation);
                 dodgeRot += shipData.DodgeRotation; // To animate, there is a 5 degree rotation per frame
             }
             else
             {
+                if (transform.position.z != 0) // Extra check to make sure ship is in correct position
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+                }
+
                 dodgeRot = 0; // Completed one dodge/barrel roll, reset rotation back to 0
                 shipModelTransform.rotation = baseRotation;
                 performDodge = false;
+                isDamageable = true; // Make vulnerable again when dodge is complete
             }
         }
         else // Did not need to perform a dodge, check for movement
         {
             shipModelTransform.rotation = baseRotation; // Resets rotation (for tilt) to base before every move
+
+            // Make sure player cannot leave screen
             if (transform.position.x <= -xBounds && direction.x < 0)
             {
                 direction.x = 0;
@@ -123,6 +132,46 @@ public class PlayerController : Spaceship
                 SceneManager.UnloadSceneAsync("PauseMenu");
                 Time.timeScale = 1.0f;
                 gamePaused = false;
+            }
+        }
+    }
+
+    // Quickly move ship to right if isRight is true, move to left otherwise
+    public void Dodge(bool isRight, int tiltRot, int zVal = 0)
+    {
+        if (movementEnabled)
+        {
+            isDamageable = false; // invulnerable when dodging
+
+            if (isRight)
+            {
+                // Change ship's location
+                Vector3 velocity = new Vector3(1, 0, zVal) * shipData.DodgeSpeed * Time.deltaTime;
+                transform.position += velocity;
+                // Change ship's rotation (in each frame, tilt 5 degrees to the right)
+                Tilt(new Vector2(1, 0), tiltRot);
+            }
+            else
+            {
+                Vector3 velocity = new Vector3(-1, 0, zVal) * shipData.DodgeSpeed * Time.deltaTime;
+                transform.position += velocity;
+
+                Tilt(new Vector2(-1, 0), tiltRot);
+            }
+
+            if (transform.position.z > 0) // if dodge overshoots trajectory, reset to correct z position
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            }
+
+            // Make sure player cannot leave screen via dodging
+            if (transform.position.x < -xBounds)
+            {
+                transform.position = new Vector3(-xBounds, transform.position.y, transform.position.z);
+            }
+            if (transform.position.x > xBounds)
+            {
+                transform.position = new Vector3(xBounds, transform.position.y, transform.position.z);
             }
         }
     }

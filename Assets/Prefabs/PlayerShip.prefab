@@ -130,7 +130,11 @@ MonoBehaviour:
   shipData: {fileID: 11400000, guid: ce6e9a5f040c2f44da959ccb79c592d0, type: 2}
   projectileFactory: {fileID: 1996850281208904984}
   shipModelTransform: {fileID: 8857153280427374498}
+  impactImpulse: 40
+  isDamageable: 1
   doublePointsDuration: 6
+  xBounds: 13
+  yBounds: 7
   ScoreAsset: {fileID: 11400000, guid: 85b81b1a8ab934f489f9bb8d1ada3160, type: 2}
 --- !u!114 &7364402061863566397
 MonoBehaviour:

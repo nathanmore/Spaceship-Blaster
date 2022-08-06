@@ -23,7 +23,8 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
 
     protected Quaternion baseRotation;
     public SpaceshipDelegate shipDestroyedDelegate;
-    private bool movementEnabled = true;
+    protected bool movementEnabled = true;
+    public bool isDamageable = true;
 
     public int ScoreValue { get { return shipData.scoreValue; } }
 
@@ -68,29 +69,6 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
         }
     }
 
-    // Quickly move ship to right if isRight is true, move to left otherwise
-    public void Dodge(bool isRight, int tiltRot)
-    {
-        if (movementEnabled)
-        {
-            if (isRight)
-            {
-                // Change ship's location
-                Vector3 velocity = new Vector3(1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
-                transform.position += velocity;
-                // Change ship's rotation (in each frame, tilt 5 degrees to the right)
-                Tilt(new Vector2(1, 0), tiltRot);
-            }
-            else
-            {
-                Vector3 velocity = new Vector3(-1, 0, 0) * shipData.DodgeSpeed * Time.deltaTime;
-                transform.position += velocity;
-
-                Tilt(new Vector2(-1, 0), tiltRot);
-            }
-        }
-    }
-
     // Fire projectile (instantiate projectile object)
     public void Fire()
     {
@@ -108,15 +86,18 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
     // If health reaches 0, call DestroyShip()
     public void Damage(int damageTaken)
     {
-        shipData.CurrentHealth -= damageTaken;
-
-        SoundManager.PlaySound(shipData.hitAudio, shipData.hitVolumeOffset);
-
-        StartCoroutine(DamageFlash()); // Coroutine to make ship flash red when damaged
-
-        if (shipData.CurrentHealth <= 0)
+        if (isDamageable)
         {
-            DestroyShip();
+            shipData.CurrentHealth -= damageTaken;
+
+            SoundManager.PlaySound(shipData.hitAudio, shipData.hitVolumeOffset);
+
+            StartCoroutine(DamageFlash()); // Coroutine to make ship flash red when damaged
+
+            if (shipData.CurrentHealth <= 0)
+            {
+                DestroyShip();
+            }
         }
     }
 
