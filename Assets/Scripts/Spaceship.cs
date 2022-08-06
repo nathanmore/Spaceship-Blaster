@@ -112,10 +112,34 @@ public class Spaceship : MonoBehaviour, IDamageable<int>
 
         SoundManager.PlaySound(shipData.hitAudio, shipData.hitVolumeOffset);
 
+        StartCoroutine(DamageFlash()); // Coroutine to make ship flash red when damaged
+
         if (shipData.CurrentHealth <= 0)
         {
             DestroyShip();
         }
+    }
+
+    public IEnumerator DamageFlash()
+    {
+      // Get list of renderers associated w/ the game objects that make up the ship
+      // Create new list to hold the original colors of each of these objects
+      Renderer[] renderers = GetComponentsInChildren<Renderer>();
+      List<Color> colorList = new List<Color>();
+
+      foreach(Renderer r in renderers) // Loop through each renderer (object) in the ship
+      {
+        //Debug.Log(r.gameObject);
+        colorList.Add(r.material.color); // Add object's current color to list
+        r.material.color = Color.red; // Change object's color to red
+      }
+      yield return new WaitForSeconds(0.2f); // Hold red color for 0.2 seconds to create flash effect
+
+      // Loop through both lists again, returning each object's color to its original
+      for(int i = 0; i < colorList.Count; i++)
+      {
+        renderers[i].material.color = colorList[i];
+      }
     }
 
     public void DestroyShip()
