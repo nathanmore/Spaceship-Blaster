@@ -20,6 +20,7 @@ public class PlayerController : Spaceship
     private bool isRight = false; // If dodge is being performed, keeps track of whether it is to the left or right
     private int dodgeRot = 0; // Tracks how much the ship has been rotated if dodge roll is happening
     private bool gamePaused = false;
+    private bool canFire = true;
 
     // Public accessor for shipData, for power-ups
     public SO_SpaceshipData ShipData { get { return shipData; } }
@@ -36,6 +37,15 @@ public class PlayerController : Spaceship
         {
             if (dodgeRot < 350) // Will rotate (roll) 350 degrees max, then reset to 0
             {
+                if (dodgeRot > (350 - 3*shipData.DodgeRotation)) // When ship is three rotations away from completing dodge, enable firing weapon
+                {
+                    canFire = true; // Enable firing weapon
+                }
+                else
+                {
+                    canFire = false; // Disable firing weapon during dodge
+                }
+
                 if (dodgeRot <= 180)
                 {
                     Dodge(isRight, shipData.DodgeRotation, -1);
@@ -112,7 +122,10 @@ public class PlayerController : Spaceship
     {
         if (context.performed)
         {
-            Fire(); // Calls fire function in base class
+            if (canFire)
+            {
+                Fire(); // Calls fire function in base class
+            }
         }
     }
 
