@@ -15,6 +15,8 @@ public class HealthPowerUp : MonoBehaviour
 
             if (player != null)
             {
+                SoundManager.PlaySound(SoundManager.Sound.playerPowerup);
+
                 player.ShipData.CurrentHealth += healthAward;
 
                 if (player.ShipData.CurrentHealth > player.ShipData.MaxHealth)
