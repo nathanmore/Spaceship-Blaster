@@ -6,6 +6,8 @@ public class BackgroundMusicManager : MonoBehaviour
 {
     public static BackgroundMusicManager instance;
 
+    [SerializeField]
+    private float volumeOffset = 0.8f;
     private AudioSource m_AudioSource;
 
     public void OnEnable()
@@ -36,7 +38,7 @@ public class BackgroundMusicManager : MonoBehaviour
         }
         else
         {
-            m_AudioSource.volume = OptionSettings.MusicVolume;
+            m_AudioSource.volume = OptionSettings.MusicVolume * volumeOffset;
         }
     }
 }

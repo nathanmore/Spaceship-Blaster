@@ -4,10 +4,8 @@ using UnityEngine;
 
 public static class OptionSettings
 {
-    [SerializeField]
-    private static float defaultSFXVolume = 0.75f;
-    [SerializeField]
-    private static float defaultMusicVolume = 0.75f;
+    private static float defaultSFXVolume = 0.5f;
+    private static float defaultMusicVolume = 0.5f;
 
     private static float sfxVolume;
     private static float musicVolume;
