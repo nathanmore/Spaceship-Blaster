@@ -37,7 +37,7 @@ public class PlayerController : Spaceship
         {
             if (dodgeRot < 350) // Will rotate (roll) 350 degrees max, then reset to 0
             {
-                if (dodgeRot > (350 - 3*shipData.DodgeRotation)) // When ship is three rotations away from completing dodge, enable firing weapon
+                if (dodgeRot > (350 - 2*shipData.DodgeRotation)) // When ship is two rotations away from completing dodge, enable firing weapon
                 {
                     canFire = true; // Enable firing weapon
                 }
