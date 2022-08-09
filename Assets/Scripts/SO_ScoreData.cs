@@ -19,6 +19,7 @@ public class SO_ScoreData : ScriptableObject
     public void Awake()
     {
         highScore = PlayerPrefs.GetInt("HighScore");
+        doublePoints = false;
     }
 
     public void IncreaseScore(int points)

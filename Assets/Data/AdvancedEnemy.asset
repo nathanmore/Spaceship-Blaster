@@ -17,7 +17,7 @@ MonoBehaviour:
   MovementSpeed: 10
   DodgeSpeed: 0
   DodgeRotation: 0
-  scoreValue: 8
+  scoreValue: 10
   fireDelay: 1
   weaponDamage: 1
   laserAudio: 6
